@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import boxes from './boxes'
+import Boxtest from './Boxtest';
 
 function App() {
+
+  const [boxArray, setBoxArray] = React.useState(boxes)
+
+  const boxEle = boxArray.map(function(item){
+    return(
+      <Boxtest
+          key={item.id} 
+          id={item.id} 
+          on={item.on} 
+          />
+    )
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {boxEle}
     </div>
   );
 }
